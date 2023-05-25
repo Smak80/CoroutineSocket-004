@@ -11,6 +11,10 @@ class Server(port: Int) {
     init{
         scope.launch {
             val s = sSocket.accept()
+            val d = s.read()
+            println(d.decodeToString())
+            s.close()
+            sSocket.close()
         }
     }
 }

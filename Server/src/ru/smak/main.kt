@@ -1,4 +1,8 @@
 package ru.smak
 
-class main {
+import ru.smak.net.Server
+
+fun main() {
+    Server(5004)
+    readln()
 }

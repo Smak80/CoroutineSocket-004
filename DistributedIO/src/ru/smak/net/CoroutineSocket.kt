@@ -52,13 +52,17 @@ class CoroutineSocket(ach: AsynchronousSocketChannel) {
         suspendCoroutine {
             channel.read(buffer, it, AsyncHandler())
         }
+        buffer.flip()
         val size = buffer.int
         buffer = ByteBuffer.allocate(size)
         suspendCoroutine {
             channel.read(buffer, it, AsyncHandler())
         }
         val ba = ByteArray(size)
+        buffer.flip()
         buffer.get(ba)
         ba
     }.await()
+
+    fun close() = channel.close()
 }

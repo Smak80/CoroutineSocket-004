@@ -22,4 +22,6 @@ class CoroutineServerSocket(port: Int) {
         }
         CoroutineSocket(sch)
     }.await()
+
+    fun close() = channel.close()
 }
